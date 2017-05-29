@@ -20,9 +20,9 @@ export class RestapiServiceProvider {
 
   getUsers() {
     if (this.data) {
-      return Promise.resolve(this.data);
+     return Promise.resolve(this.data);
     }
-
+    
     return new Promise(resolve => {
       this.http.get(this.apiUrl+'/getCustomers')
         .map(res => res.json())
