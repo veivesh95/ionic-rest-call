@@ -12,12 +12,16 @@ import 'rxjs/add/operator/map';
 export class RestapiServiceProvider {
 
   data: any;
+  customerId: number;
+  
+
   apiUrl = 'http://mfin-api-167306.appspot.com';
 
   constructor(public http: Http) {
     console.log('Rest ApI is called');
   }
 
+//get data by GET!
   getUsers() {
     if (this.data) {
      return Promise.resolve(this.data);
@@ -33,6 +37,7 @@ export class RestapiServiceProvider {
     });
   }
 
+  //save data by post (i guess)
   saveUser(data) {
     return new Promise((resolve, reject) => {
       this.http.post(this.apiUrl+'/getCustomers', JSON.stringify(data))
@@ -41,6 +46,18 @@ export class RestapiServiceProvider {
         }, (err) => {
           reject(err);
         });
+    });
+  }
+
+  //get exact one customer detail from the json objects
+  getSingleUser(cusId){
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/getCustomer/'+cusId)
+      .map(res => res.json())
+      .subscribe(data => {
+        this.data = data;
+        resolve(this.data);
+      });
     });
   }
 

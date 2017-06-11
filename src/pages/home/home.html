@@ -7,25 +7,31 @@
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-  <br>
+  <button ion-button full (click)="openConfigPage()">Settings</button>
+  <!--<button ion-button full (click)="openJohnDoe()">Contacts</button>-->
+
+  <!--<br>-->
+  <!--<br>-->
+  
 
   <h2>User List</h2>
-  <ion-list>
+  <ion-list no-lines>
     
-    <ion-item *ngFor="let user of users">
-      <button ion-button full (click)="openContact()">
-        <!--(click)="openContact()"-->
+    <!--<ion-item *ngFor="let user of users">-->
+      <!--<button ion-button block (click)="openContact(user.customerID)">-->
+        <button ion-item *ngFor="let user of users" (click)="openContact(user)">
          
            
       {{user.name}} {{user.surname}}
         
    
     </button>      
-    </ion-item>
+    <!--</ion-item>-->
+    <!--<button ion-button block (click)="openJaneDoe()">JANE DOE</button>-->
   </ion-list>
+
+  <br>
+
+
   
 </ion-content>
