@@ -28,7 +28,7 @@ export class RestapiServiceProvider {
     }
     
     return new Promise(resolve => {
-      this.http.get(this.apiUrl+'/getCustomers')
+      this.http.get(this.apiUrl+'/customer')
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
